@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+        <title>Hangman {{title}}</title>
+        {% else %}
+        <title>Hangman</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Hangman</a></li>
+                <li>Profile</li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li>Logout</li>
+            </ul>
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
