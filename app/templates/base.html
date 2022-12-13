@@ -12,8 +12,11 @@
             <ul>
                 <li><a href="{{ url_for('index') }}">Hangman</a></li>
                 <li>Profile</li>
+                {% if current_user.is_anonymous %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>
-                <li>Logout</li>
+                {% else %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% endif %}
             </ul>
         </div>
         <hr>
@@ -21,7 +24,7 @@
         {% if messages %}
         <ul>
             {% for message in messages %}
-            <li>{{ message }}</li>
+            <li style="color: red;">{{ message }}</li>
             {% endfor %}
         </ul>
         {% endif %}

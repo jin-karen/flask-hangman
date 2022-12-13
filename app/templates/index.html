@@ -2,12 +2,12 @@
 
 {% block content %}
     <h1>Hangman Game</h1>
-    {% for user in users %}
-    {% if user.username == login %}
-    <h2>Hello, {{user.username}}!</h1>
-    <h3>Games Played: {{user.games}}</h3>
-    <h3>Games Won: {{user.won}}</h3>
-    <h3>Games Lost: {{user.lost}}</h3>
+    {% if current_user.is_anonymous %}
+    <h2>Hello Guest!</h2>
+    {% else %}
+    <h2>Hello, {{ current_user.username }}!</h2>
+    <h3>Games Played: {{ current_user.games_played }}</h3>
+    <h3>Games Won: {{ current_user.won }}</h3>
+    <h3>Games Lost: {{ current_user.lost }}</h3>
     {% endif %}
-    {% endfor %}
 {% endblock %}
