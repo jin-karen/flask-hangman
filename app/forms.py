@@ -1,10 +1,9 @@
-#Login form 
-#Asks for username, password, "remember me" check box, and a submit button
-
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
 
+#Login form 
+#Asks for username, password, "remember me" check box, and a submit button
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
