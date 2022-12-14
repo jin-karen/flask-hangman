@@ -1,13 +1,11 @@
+# Flask-SQLAlchemy Database Models - Data Represented by Classes
 from datetime import datetime
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import login
 
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
-
+# Database User Model 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -24,6 +22,7 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+# Database Game Model
 class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     game_won = db.Column(db.Boolean, unique=False, default=True)
@@ -33,3 +32,8 @@ class Game(db.Model):
 
     def __repr__(self):
         return '<Game with {}>'.format(self.opponent)
+
+# User Loader for Flask_Login to Check current_user        
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))

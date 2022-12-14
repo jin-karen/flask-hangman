@@ -1,3 +1,4 @@
+# Python Form Classes that Represent Web Forms Using Flask-WTF Extension
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
@@ -12,6 +13,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 #User Registration Form
+#Asks for username, email, password, password confirmation, and submit button
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -20,6 +22,7 @@ class RegistrationForm(FlaskForm):
         'Confirm Password', validators=[DataRequired(),EqualTo('password')])
     submit = SubmitField('Register')
 
+    #Two custom validators that are used in combination with the stock validators
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
