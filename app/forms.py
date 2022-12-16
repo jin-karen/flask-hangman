@@ -15,6 +15,8 @@ class LoginForm(FlaskForm):
 #User Registration Form
 #Asks for username, email, password, password confirmation, and submit button
 class RegistrationForm(FlaskForm):
+    first_name = StringField('First Name', validators=[DataRequired()])
+    last_name = StringField('Last Name', validators=[DataRequired()])
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])

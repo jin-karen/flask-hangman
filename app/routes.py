@@ -50,7 +50,7 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        user = User(first_name = form.first_name.data, last_name = form.last_name.data, username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
@@ -58,10 +58,10 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-# App.route Decorator and View Function for Game Page
+# App.route Decorator and View Function for User Profile Page
 # Protected Page - Login Required
-@app.route('/game')
+@app.route('/user/<username>')
 @login_required
-def game():
-    #incomplete
-    return render_template('base.html', title="Game Page")
+def user(username):
+    user =  User.query.filter_by(username=username).first_or_404()
+    return render_template('user.html', title="Profile Page", user=user)
