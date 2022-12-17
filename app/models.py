@@ -4,6 +4,7 @@ from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import login
+from hashlib import md5
 
 # Database User Model 
 class User(UserMixin, db.Model):
@@ -23,6 +24,14 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    # Generate User Avatar with Gravatar
+    def avatar(self, size):
+        # MD5 Hash of User's Lowercased Email in Byte (Not String) as Hex Digits
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        # Gravatar Image Returned - Unregistered Avatars Default to "wavatar"
+        return 'https://www.gravatar.com/avatar/{}?d=wavatar&s={}'.format(digest, size)
+    
 
 # Database Game Model
 class Game(db.Model):
@@ -40,6 +49,9 @@ class Game(db.Model):
 def load_user(id):
     return User.query.get(int(id))
 
+
+
+    
 
 
 
