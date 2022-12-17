@@ -9,7 +9,7 @@ from flask_login import login_required
 from flask import request
 from werkzeug.urls import url_parse
 from app import db
-from app.forms import RegistrationForm
+from app.forms import RegistrationForm, EditProfileForm
 
 # App.route Decorator and View Function for Index/Homepage
 @app.route('/')
@@ -65,3 +65,20 @@ def register():
 def user(username):
     user =  User.query.filter_by(username=username).first_or_404()
     return render_template('user.html', title="Profile Page", user=user)
+
+# App.route Decorator and View Function for Edit Profile Page
+# Protected Page - Login Required
+@app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    form = EditProfileForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.about_me = form.about_me.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('edit_profile'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.about_me.data = current_user.about_me
+    return render_template('edit_profile.html', title='Edit Profile', form=form)

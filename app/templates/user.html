@@ -6,6 +6,11 @@
     <table>
         <tr valign="top">
             <td><img src="{{ user.avatar(128) }}"></td>
+            <td>
+                {% if user.about_me %}
+                <p>{{ user.about_me }}</p>
+                {% endif %}
+            </td>
         </tr>
     </table>
     <hr>
@@ -13,5 +18,8 @@
     <h3>Last Name: {{ current_user.last_name }}</h3>
     <h3>Email Address: {{ current_user.email }}</h3>
     <h3>Games Played: {{ current_user.games_played }}</h3>
+    {% if user == current_user %}
+        <p><a href="{{ url_for('edit_profile') }}">Edit Profile</a></p>
+    {% endif %}
 
 {% endblock %}
