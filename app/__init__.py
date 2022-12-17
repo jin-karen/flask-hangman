@@ -19,5 +19,5 @@ login = LoginManager(app)
 ## Tells flask-login which is login view function to use protected pages
 login.login_view = 'login'
 
-from app import routes, models
+from app import routes, models, errors
 
