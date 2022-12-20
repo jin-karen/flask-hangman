@@ -2,6 +2,6 @@
 
 config files - change use template
 install requirements
-env file for secret environment key
+env file for secret environment key, flask-mail config environment key
 virtual environment - preference
 migrations directory - explanation and use
