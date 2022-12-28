@@ -47,15 +47,37 @@
                 </div>
             </div>
         </nav>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li style="color: red;">{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
+        <br>
+        <!--Shows flashed messages if applicable-->
+        <div class="container-fluid">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <!--Red alert-danger flash message alerts for messages with "Invalid"-->
+                    {% if "Invalid" in message %}
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            {{ message }}
+                        </div>
+                    <!--blue alert-info flash message alerts for messages with "Check"-->
+                    {% elif "Check" in message %}
+                        <div class="alert alert-info alert-dismissible">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            {{ message }}
+                        </div>
+                    <!--Green alert-success flash message alerts for all other messages-->
+                    {% else %}
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
         <!--Content for Inherited Templates-->
         <div class="container-fluid">
             {% block content %}{% endblock %}
