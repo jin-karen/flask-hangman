@@ -58,7 +58,7 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user! Login now!')
+        flash('Success! Congratulations, you are now a registered user. Login now!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -80,7 +80,7 @@ def edit_profile():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash('Success! Your changes have been saved.')
         return redirect(url_for('user', username=current_user.username))
     elif request.method == 'GET':
         form.username.data = current_user.username
@@ -116,6 +116,6 @@ def reset_password(token):
     if form.validate_on_submit():
         user.set_password(form.password.data)
         db.session.commit()
-        flash('Your password has been reset.')
+        flash('Success! Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)

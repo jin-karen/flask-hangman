@@ -54,21 +54,21 @@
             {% if messages %}
             <ul>
                 {% for message in messages %}
+                    <!--Green alert-success flash message alerts for messages with "Success"-->
+                    {% if "Success" in message %}
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            {{ message }}
+                        </div>
                     <!--Red alert-danger flash message alerts for messages with "Invalid"-->
-                    {% if "Invalid" in message %}
+                    {% elif "Invalid" in message %}
                         <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             {{ message }}
                         </div>
-                    <!--blue alert-info flash message alerts for messages with "Check"-->
-                    {% elif "Check" in message %}
-                        <div class="alert alert-info alert-dismissible">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            {{ message }}
-                        </div>
-                    <!--Green alert-success flash message alerts for all other messages-->
+                    <!--blue alert-info flash message alerts for all other messages-->
                     {% else %}
-                        <div class="alert alert-success alert-dismissible">
+                        <div class="alert alert-info alert-dismissible">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             {{ message }}
                         </div>
