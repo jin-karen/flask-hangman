@@ -1,4 +1,7 @@
 # GITIGNORE - Files and Directories to Ignore for Upload 
+# Unused Images
+\app\static\img\old img\
+
 # Databases
 *.db
 
