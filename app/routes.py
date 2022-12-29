@@ -119,3 +119,8 @@ def reset_password(token):
         flash('Success! Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+# App.route Decorator and View Function for Hangman Game Page
+@app.route('/play_hangman')
+def play_hangman():
+    return render_template('play_hangman.html', title='Hangman Game')

@@ -1,0 +1,11 @@
+<!--Hangman Game Page Template - Inherits from Base Template-->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hangman Game</h1>
+    {% if current_user.is_anonymous %}
+    <h2>Hello Guest!</h2>
+    {% else %}
+    <h2>Hello, {{ current_user.username }}!</h2>
+    {% endif %}
+{% endblock %}
