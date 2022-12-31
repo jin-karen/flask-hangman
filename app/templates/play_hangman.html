@@ -3,9 +3,6 @@
 
 {% block content %}
     <h1>Hangman Game</h1>
-    {% if current_user.is_anonymous %}
-    <h2>Hello Guest!</h2>
-    {% else %}
-    <h2>Hello, {{ current_user.username }}!</h2>
-    {% endif %}
+    <h2>{{ current_user.username }}!</h2>
+    <canvas id="hangmanCanvas"></canvas>
 {% endblock %}
