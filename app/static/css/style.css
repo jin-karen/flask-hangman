@@ -72,3 +72,7 @@ html {
     height: 600px;
     border: 3px solid black;
 }
+
+#startLogo{
+    width: 400px;
+}
