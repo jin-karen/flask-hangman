@@ -1,0 +1,18 @@
+<!--Singleplayer Hangman Game Page Template - Inherits from Base Hangman Template-->
+{% extends "base_hangman.html" %}
+
+{% block game %}
+    <h2 class="center">Single Player</h2>
+    <div class="center">
+        <canvas id="singleplayerCanvas"></canvas>
+        <div style="display:none;">
+            <img id="setupImg" src="{{ url_for('static', filename='img/hangman_setup.png') }}">
+            <img id="img1" src="{{ url_for('static', filename='img/hangman1.png') }}">
+            <img id="img2" src="{{ url_for('static', filename='img/hangman2.png') }}">
+            <img id="img3" src="{{ url_for('static', filename='img/hangman3.png') }}">
+            <img id="img4" src="{{ url_for('static', filename='img/hangman4.png') }}">
+            <img id="img5" src="{{ url_for('static', filename='img/hangman5.png') }}">
+            <img id="img6" src="{{ url_for('static', filename='img/hangman6.png') }}">
+        </div>
+    </div>
+{% endblock %}df

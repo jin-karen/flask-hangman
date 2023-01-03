@@ -118,9 +118,19 @@ def reset_password(token):
         db.session.commit()
         flash('Success! Your password has been reset.')
         return redirect(url_for('login'))
-    return render_template('reset_password.html', form=form)
+    return render_template('reset_password.html', title='Reset Password', form=form)
 
 # App.route Decorator and View Function for Hangman Game Page
 @app.route('/play_hangman')
 def play_hangman():
-    return render_template('play_hangman.html', title='Hangman Game')
+    return render_template('play_hangman.html', title='Hangman Game', bg_class='hangmanGamePage')
+
+# App.route Decorator and View Function for Singleplayer Hangman Game Page
+@app.route('/singleplayer_hangman')
+def singleplayer_hangman():
+    return render_template('singleplayer_hangman.html', title='Hangman Game', bg_class='hangmanGamePage')
+
+# App.route Decorator and View Function for Two Player Hangman Game Page
+@app.route('/two_player_hangman')
+def two_player_hangman():
+    return render_template('two_player_hangman.html', title='Hangman Game', bg_class='hangmanGamePage')

@@ -1,8 +1,16 @@
-<!--Hangman Game Page Template - Inherits from Base Template-->
-{% extends "base.html" %}
+<!--Play Hangman Start Page Template - Inherits from Base Hangman Template-->
+{% extends "base_hangman.html" %}
 
-{% block content %}
-    <h1>Hangman Game</h1>
-    <h2>{{ current_user.username }}!</h2>
-    <canvas id="hangmanCanvas"></canvas>
+{% block game %}
+    <br>
+    <br>
+    <div class="center">
+        <img id="startLogo" src="{{ url_for('static', filename='img/start_logo.png') }}">
+    </div>
+    <br>
+    <br>
+    <div class="center">
+        <a href="{{ url_for('singleplayer_hangman') }}"><button class="startBtn">Single Player Hangman</button></a>
+        <a href="{{ url_for('two_player_hangman') }}"><button class="startBtn">Two Player Hangman</button></a>
+    </div>
 {% endblock %}

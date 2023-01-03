@@ -1,7 +1,74 @@
-#hangmanCanvas {
+html {
+    height:100%;
+}
+
+/* Centered Text and Elements */
+.center {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Large Title */
+.largeTitle {
+    font-size: 600%;
+}
+
+/* Light Heading Style */
+.lightHeading{
+    color: #EBE0D2;
+}
+
+/* .textStroke{
+    -webkit-text-stroke: 2px #084A59;
+} */
+
+/* CSS for Hangman Game Pages */
+.hangmanGamePage {
+    height:100%;
+    background-image: linear-gradient(#084A59,#156A7D, #187D94);
+    width: 100%;
+    height: 100%;
+    /**/
+}
+
+/* Canvas for Hangman Game Start Page
+#startCanvas {
+    width: 400px; 
+    height: 400px;
+    border: 5px solid #084A59;
+} */
+
+/* Start Page Button to Choose Game Mode */
+.startBtn {
+    border: 3px solid #084A59;
+    border-radius: 10px;
+    width: 250px;
+    height: 70px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: monospace;
+    background-color: #EBE0D2;
+    color: #084A59;
+}
+
+/* Hover Selector for Start Button */
+.startBtn:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 15px 1px;
+}
+
+/* Active Selector for Start Button */
+.startBtn:active{
+    transform: scale(1.05) translateY(3px);
+    box-shadow: 0 0 10px 1px;
+}
+
+/* Canvas for Hangman Game Play Pages */
+#singleplayerCanvas {
     width: 650px; 
     height: 600px;
     border: 3px solid black;
 }
-
-/**/
