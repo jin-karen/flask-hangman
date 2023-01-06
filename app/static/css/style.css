@@ -34,12 +34,9 @@ html {
     /**/
 }
 
-/* Canvas for Hangman Game Start Page
-#startCanvas {
-    width: 400px; 
-    height: 400px;
-    border: 5px solid #084A59;
-} */
+.conceal {
+    display: none;
+}
 
 /* Start Page Button to Choose Game Mode */
 .startBtn {
@@ -67,6 +64,12 @@ html {
 }
 
 /* Canvas for Hangman Game Play Pages */
+#startCanvas {
+    width: 650px; 
+    height: 600px;
+    border: 3px solid black;
+}
+
 #singleplayerCanvas {
     width: 650px; 
     height: 600px;
