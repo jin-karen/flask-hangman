@@ -16,7 +16,7 @@ html {
     font-size: 600%;
 }
 
-/* Light Heading Style */
+/* Light Heading Style*/
 .lightHeading{
     color: #EBE0D2;
 }
@@ -63,11 +63,11 @@ html {
     box-shadow: 0 0 10px 1px;
 }
 
-/* Canvas for Hangman Game Play Pages */
+/* Canvas for Hangman Game Play Pages*/
 #singleplayerCanvas {
-    width: 650px; 
+    width: 900px; /*650px*/
     height: 600px;
-    border: 3px solid black;
+    border: 7px solid #333333;
 }
 
 #startLogo{
