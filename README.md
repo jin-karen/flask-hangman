@@ -15,4 +15,5 @@ Migration - Alembic with flask
 bootstrap
 gitignore
 requirements.txt
-html canvas
+html canvas - access with javascript canvas/context, window.devicePixelRatio, mouse positions, rectangles, paths w/ strokes and fill, background, buttons/border-radius, draw image, gradients, etc.
+event listeners - once property, remove function
