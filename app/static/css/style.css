@@ -64,12 +64,6 @@ html {
 }
 
 /* Canvas for Hangman Game Play Pages */
-#startCanvas {
-    width: 650px; 
-    height: 600px;
-    border: 3px solid black;
-}
-
 #singleplayerCanvas {
     width: 650px; 
     height: 600px;
