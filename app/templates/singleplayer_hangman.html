@@ -15,6 +15,9 @@
             <img id="hangman4" src="{{ url_for('static', filename='img/hangman4.png') }}">
             <img id="hangman5" src="{{ url_for('static', filename='img/hangman5.png') }}">
             <img id="hangman6" src="{{ url_for('static', filename='img/hangman6.png') }}">
+            <div id="display">{{ display }}</div>
         </div>
+        <p>{{ word }}</p>
+        <p>{{ display }}</p>
     </div>
 {% endblock %}

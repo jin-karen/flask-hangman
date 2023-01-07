@@ -104,6 +104,12 @@ function singleplayerSetup() {
     const bWidth = 400;
     const bHeight = 400;
     ctx.drawImage(blender, x, 20, bWidth, bHeight);
+    const display = document.getElementById("display");
+    console.log(display.textContent);
+    ctx.font = "40px monospace";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText(display.textContent, x, y+170);
 }
 
 
@@ -113,36 +119,36 @@ function singleplayerSetup() {
 // ctx.fillText("A B C", x*1.3, y*.79);
 // ctx.fillText("A B C", x*1.3, y*.92);
 
-// Incorrect Guess Hangman Display
-const hm1 = document.getElementById("hangman1");
-const hm1Width = 400;
-const hm1Height = 400;
-ctx.drawImage(hm1, x-hsWidth+60, 20, hm1Width, hm1Height);
+// // Incorrect Guess Hangman Display
+// const hm1 = document.getElementById("hangman1");
+// const hm1Width = 400;
+// const hm1Height = 400;
+// ctx.drawImage(hm1, x-hsWidth+60, 20, hm1Width, hm1Height);
 
-const hm2 = document.getElementById("hangman2");
-const hm2Width = 400;
-const hm2Height = 400;
-ctx.drawImage(hm2, x-hsWidth+60, 20, hm2Width, hm2Height);
+// const hm2 = document.getElementById("hangman2");
+// const hm2Width = 400;
+// const hm2Height = 400;
+// ctx.drawImage(hm2, x-hsWidth+60, 20, hm2Width, hm2Height);
 
-const hm3 = document.getElementById("hangman3");
-const hm3Width = 400;
-const hm3Height = 400;
-ctx.drawImage(hm3, x-hsWidth+60, 20, hm3Width, hm3Height);
+// const hm3 = document.getElementById("hangman3");
+// const hm3Width = 400;
+// const hm3Height = 400;
+// ctx.drawImage(hm3, x-hsWidth+60, 20, hm3Width, hm3Height);
 
-const hm4 = document.getElementById("hangman4");
-const hm4Width = 400;
-const hm4Height = 400;
-ctx.drawImage(hm4, x-hsWidth+60, 20, hm4Width, hm4Height);
+// const hm4 = document.getElementById("hangman4");
+// const hm4Width = 400;
+// const hm4Height = 400;
+// ctx.drawImage(hm4, x-hsWidth+60, 20, hm4Width, hm4Height);
 
-const hm5 = document.getElementById("hangman5");
-const hm5Width = 400;
-const hm5Height = 400;
-ctx.drawImage(hm5, x-hsWidth+60, 20, hm5Width, hm5Height);
+// const hm5 = document.getElementById("hangman5");
+// const hm5Width = 400;
+// const hm5Height = 400;
+// ctx.drawImage(hm5, x-hsWidth+60, 20, hm5Width, hm5Height);
 
-const hm6 = document.getElementById("hangman6");
-const hm6Width = 400;
-const hm6Height = 400;
-ctx.drawImage(hm6, x-hsWidth+60, 20, hm6Width, hm6Height);
+// const hm6 = document.getElementById("hangman6");
+// const hm6Width = 400;
+// const hm6Height = 400;
+// ctx.drawImage(hm6, x-hsWidth+60, 20, hm6Width, hm6Height);
 
 
 

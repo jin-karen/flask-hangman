@@ -8,6 +8,7 @@ mail_password with gmail (less secure removed), mail_username used in email.py f
 migrations directory - explanation and use
 "flask db upgrade" - migration given and schema from models but no database - update to get all tables
 following tutorial
+new word list https://www.desiquintans.com/nounlist 6800 - added filtered and converted to json with python
 
 new:
 flask - routes, html template, forms, database (SQLAlchemy), static files, environment variables, configuration, jinja2, sending emails, password encryption, custom error pages

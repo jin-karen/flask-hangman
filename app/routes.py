@@ -13,6 +13,8 @@ from app.forms import RegistrationForm, EditProfileForm
 from app.forms import ResetPasswordRequestForm
 from app.email import send_password_reset_email
 from app.forms import ResetPasswordForm
+import json
+from app.gameplay import pick_word, hide_word
 
 
 # App.route Decorator and View Function for Index/Homepage
@@ -128,7 +130,17 @@ def play_hangman():
 # App.route Decorator and View Function for Singleplayer Hangman Game Page
 @app.route('/singleplayer_hangman')
 def singleplayer_hangman():
-    return render_template('singleplayer_hangman.html', title='Hangman Game', bg_class='hangmanGamePage')
+    # Opens words JSON file and returns JSON object
+    # Make sure json file is in correct path
+    f = open('app/static/data/words.json')
+    data = json.load(f)
+    # Extracts and saves list value from "words" key in words variable
+    words = data["words"]
+    # Closes JSON file
+    f.close()
+    word = pick_word(words)
+    display = hide_word(word)
+    return render_template('singleplayer_hangman.html', title='Hangman Game', bg_class='hangmanGamePage', word=word, display=display)
 
 # App.route Decorator and View Function for Two Player Hangman Game Page
 @app.route('/two_player_hangman')
