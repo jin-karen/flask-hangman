@@ -101,12 +101,15 @@ const hsX = x-hsWidth+60;
 const hsY = 20;
 
 // Guess form for hangman game
+const display = document.getElementById("display");
+const displayArray = display.textContent.split(" ");
 const guessBtn = document.getElementById("guessBtn");
 const guessText = document.getElementById("guessText");
 const guessWarning = document.getElementById("guessWarning");
 let currentGuess;
-let layer1Guess = [];
-let layer2Guess = [];
+let guessedWords = []; // all letter guesses
+let layer1Guess = []; // first three incorrect guesses
+let layer2Guess = []; // last three incorrect guesses
 
 // Singleplayer hangman game setup after clicking start
 function singleplayerSetup() {
@@ -114,7 +117,6 @@ function singleplayerSetup() {
     ctx.drawImage(hs, hsX, hsY, hsWidth, hsHeight);
     const blender = document.getElementById("blender");
     ctx.drawImage(blender, x, hsY, hsWidth, hsHeight);
-    const display = document.getElementById("display");
     console.log(display.textContent);
     ctx.font = "40px monospace";
     ctx.fillStyle = "black";
@@ -130,21 +132,78 @@ function singleplayerSetup() {
 guessBtn.addEventListener('click', getInputValue);
 
 function getInputValue() {
-    currentGuess = (guessText.value).toUpperCase();
+    currentGuess = guessText.value;
     guessText.value = "";
     guessWarning.textContent = "";
     console.log(currentGuess);
-    if (layer1Guess.includes(currentGuess) || layer2Guess.includes(currentGuess)) {
+    if (guessedWords.includes(currentGuess)) {
         guessWarning.textContent = "You guessed this letter already!";
     } else if (currentGuess.toLowerCase() == currentGuess.toUpperCase()) {
         guessWarning.textContent = "Please enter a valid alphabetical letter!";
-    } else if (layer1Guess.length<3) {
-        layer1Guess.push(currentGuess);
-    } else if (layer1Guess.length==3 && layer2Guess.length<3) {
-        layer2Guess.push(currentGuess);
     } else {
-        console.log("DEAD");
+        guessedWords.push(currentGuess);
+        checkInput();
     }
+}
+
+function checkInput() {
+    const word = document.getElementById("word");
+    let minOne = false;
+    console.log(displayArray);
+    for (let i = 0; i < word.textContent.length; i++) {
+        if (word.textContent[i] == currentGuess) {
+            displayArray[i] = currentGuess;
+            minOne = true;
+        } 
+    }
+    if (!minOne) {
+        incorrectGuess();
+    }
+}
+
+function incorrectGuess() {
+    switch (true) {
+        case (layer1Guess.length == 0):
+            layer1Guess.push(currentGuess);
+            const hm1 = document.getElementById("hangman1");
+            ctx.drawImage(hm1, hsX, hsY, hsWidth, hsHeight);
+            break;
+        case (layer1Guess.length == 1):
+            layer1Guess.push(currentGuess);
+            const hm2 = document.getElementById("hangman2");
+            ctx.drawImage(hm2, hsX, hsY, hsWidth, hsHeight);
+            break;
+        case (layer1Guess.length == 2):
+            layer1Guess.push(currentGuess);
+            const hm3 = document.getElementById("hangman3");
+            ctx.drawImage(hm3, hsX, hsY, hsWidth, hsHeight);
+            break;
+        case (layer1Guess.length == 3 && layer2Guess.length == 0):
+            layer2Guess.push(currentGuess);
+            const hm4 = document.getElementById("hangman4");
+            ctx.drawImage(hm4, hsX, hsY, hsWidth, hsHeight);
+            break;
+        case (layer1Guess.length == 3 && layer2Guess.length == 1):
+            layer2Guess.push(currentGuess);
+            const hm5 = document.getElementById("hangman5");
+            ctx.drawImage(hm5, hsX, hsY, hsWidth, hsHeight);
+            break;
+        case (layer1Guess.length == 3 && layer2Guess.length == 2):
+            layer2Guess.push(currentGuess);
+            const hm6 = document.getElementById("hangman6");
+            ctx.drawImage(hm6, hsX, hsY, hsWidth, hsHeight);
+            break;
+        default:
+            console.log("DEAD")
+            break;
+    }
+    // if (layer1Guess.length<3) {
+    //     layer1Guess.push(currentGuess);
+    // } else if (layer1Guess.length==3 && layer2Guess.length<3) {
+    //     layer2Guess.push(currentGuess);
+    // } else {
+    //     console.log("DEAD");
+    // }
     console.log(layer1Guess);
     console.log(layer2Guess);
     // Guessed Words Display
@@ -154,8 +213,6 @@ function getInputValue() {
     ctx.fillText(layer1Guess.join(" "), x*1.26, y*.69);
     ctx.fillText(layer2Guess.join(" "), x*1.26, y*.80);
 }
-
-
 
 // // Incorrect Guess Hangman Display
 // const hm1 = document.getElementById("hangman1");
