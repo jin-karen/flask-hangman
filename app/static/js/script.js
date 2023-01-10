@@ -94,61 +94,87 @@ c.addEventListener('click', (e) => {
     }
 {once : true}});
 
+// Hangman image setup: width, height, x, y
+const hsWidth = 350;
+const hsHeight = 350;
+const hsX = x-hsWidth+60;
+const hsY = 20;
+
+// Guess form for hangman game
+const guessBtn = document.getElementById("guessBtn");
+const guessText = document.getElementById("guessText");
+const guessWarning = document.getElementById("guessWarning");
+let currentGuess;
+let layer1Guess = [];
+let layer2Guess = [];
+
 // Singleplayer hangman game setup after clicking start
 function singleplayerSetup() {
     const hs = document.getElementById("hangmanSetup");
-    const hsWidth = 400;
-    const hsHeight = 400;
-    ctx.drawImage(hs, x-hsWidth+60, 20, hsWidth, hsHeight);
+    ctx.drawImage(hs, hsX, hsY, hsWidth, hsHeight);
     const blender = document.getElementById("blender");
-    const bWidth = 400;
-    const bHeight = 400;
-    ctx.drawImage(blender, x, 20, bWidth, bHeight);
+    ctx.drawImage(blender, x, hsY, hsWidth, hsHeight);
     const display = document.getElementById("display");
     console.log(display.textContent);
     ctx.font = "40px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
-    ctx.fillText(display.textContent, x, y+170);
+    ctx.fillText(display.textContent, x, y+130);
+    const guess = document.getElementById("guess");
+    guess.classList.toggle('conceal');
+    
 }
 
 
-// // Guessed Words Display
-// ctx.font = "40px monospace";
-// ctx.fillStyle = "black";
-// ctx.fillText("A B C", x*1.3, y*.79);
-// ctx.fillText("A B C", x*1.3, y*.92);
+// Event Listener to receive user inputted letter guesses
+guessBtn.addEventListener('click', getInputValue);
+
+function getInputValue() {
+    currentGuess = (guessText.value).toUpperCase();
+    guessText.value = "";
+    guessWarning.textContent = "";
+    console.log(currentGuess);
+    if (layer1Guess.includes(currentGuess) || layer2Guess.includes(currentGuess)) {
+        guessWarning.textContent = "You guessed this letter already!";
+    } else if (currentGuess.toLowerCase() == currentGuess.toUpperCase()) {
+        guessWarning.textContent = "Please enter a valid alphabetical letter!";
+    } else if (layer1Guess.length<3) {
+        layer1Guess.push(currentGuess);
+    } else if (layer1Guess.length==3 && layer2Guess.length<3) {
+        layer2Guess.push(currentGuess);
+    } else {
+        console.log("DEAD");
+    }
+    console.log(layer1Guess);
+    console.log(layer2Guess);
+    // Guessed Words Display
+    ctx.font = "37px monospace";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "left";
+    ctx.fillText(layer1Guess.join(" "), x*1.26, y*.69);
+    ctx.fillText(layer2Guess.join(" "), x*1.26, y*.80);
+}
+
+
 
 // // Incorrect Guess Hangman Display
 // const hm1 = document.getElementById("hangman1");
-// const hm1Width = 400;
-// const hm1Height = 400;
-// ctx.drawImage(hm1, x-hsWidth+60, 20, hm1Width, hm1Height);
+// ctx.drawImage(hm1, hsX, hsY, hsWidth, hsHeight);
 
 // const hm2 = document.getElementById("hangman2");
-// const hm2Width = 400;
-// const hm2Height = 400;
-// ctx.drawImage(hm2, x-hsWidth+60, 20, hm2Width, hm2Height);
+// ctx.drawImage(hm2, hsX, hsY, hsWidth, hsHeight);
 
 // const hm3 = document.getElementById("hangman3");
-// const hm3Width = 400;
-// const hm3Height = 400;
-// ctx.drawImage(hm3, x-hsWidth+60, 20, hm3Width, hm3Height);
+// ctx.drawImage(hm3, hsX, hsY, hsWidth, hsHeight);
 
 // const hm4 = document.getElementById("hangman4");
-// const hm4Width = 400;
-// const hm4Height = 400;
-// ctx.drawImage(hm4, x-hsWidth+60, 20, hm4Width, hm4Height);
+// ctx.drawImage(hm4, hsX, hsY, hsWidth, hsHeight);
 
 // const hm5 = document.getElementById("hangman5");
-// const hm5Width = 400;
-// const hm5Height = 400;
-// ctx.drawImage(hm5, x-hsWidth+60, 20, hm5Width, hm5Height);
+// ctx.drawImage(hm5, hsX, hsY, hsWidth, hsHeight);
 
 // const hm6 = document.getElementById("hangman6");
-// const hm6Width = 400;
-// const hm6Height = 400;
-// ctx.drawImage(hm6, x-hsWidth+60, 20, hm6Width, hm6Height);
+// ctx.drawImage(hm6, hsX, hsY, hsWidth, hsHeight);
 
 
 

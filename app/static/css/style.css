@@ -2,9 +2,8 @@ html {
     height:100%;
 }
 
-/* Centered Text and Elements */
+/* Centered Text and Elements text-align: center;*/
 .center {
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,6 +62,11 @@ html {
     box-shadow: 0 0 10px 1px;
 }
 
+
+
+
+
+
 /* Canvas for Hangman Game Play Pages*/
 #singleplayerCanvas {
     width: 900px; /*650px*/
@@ -70,6 +74,43 @@ html {
     border: 7px solid #333333;
 }
 
-#startLogo{
+#startLogo {
     width: 400px;
+}
+
+#guess {
+    display: flexbox;
+    flex-direction: column;
+    position: relative;
+    bottom: 135px;
+    gap: 2px;
+}
+
+#guessTitle {
+    color: #084A59;
+}
+
+.guessElement{
+    border-radius: 5px;
+    border-color: #084A59;
+    font-family: monospace;
+    height: 40px;
+}
+
+#guessText {
+    text-align: center;
+}
+
+#guessBtn {
+    background-color: #084A59;
+    color: #EBE0D2;
+    font-size: 20px;
+}
+/*
+color: #084A59;
+*/
+#guessWarning {
+    padding-top: 10px;
+    font-size: 18px;
+    color: #B3351E;
 }

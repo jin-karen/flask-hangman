@@ -6,7 +6,7 @@
     <br>
     <div class="center">
         <canvas id="singleplayerCanvas" ></canvas>
-        <div style="display:none;">
+        <div class="conceal">
             <img id="hangmanSetup" src="{{ url_for('static', filename='img/hangman_setup.png') }}">
             <img id="blender" src="{{ url_for('static', filename='img/blender.png') }}">
             <img id="hangman1" src="{{ url_for('static', filename='img/hangman1.png') }}">
@@ -17,7 +17,15 @@
             <img id="hangman6" src="{{ url_for('static', filename='img/hangman6.png') }}">
             <div id="display">{{ display }}</div>
         </div>
-        <p>{{ word }}</p>
-        <p>{{ display }}</p>
     </div>
+    <div class="center conceal" id="guess">
+        <h4 id="guessTitle">What letter would you like to pick?</h4>
+        <form class="center">
+            <input class="guessElement" type="text" size="10" maxlength="1" id="guessText">
+            <input class="guessElement" type="button" value="ENTER" id="guessBtn">
+        </form>
+        <h5 id="guessWarning"></h5>
+    </div>
+    <p style="position:absolute; top:100px;">{{ word }}{{ display }}</p>
+
 {% endblock %}
