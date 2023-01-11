@@ -107,6 +107,7 @@ const guessBtn = document.getElementById("guessBtn");
 const guessText = document.getElementById("guessText");
 const guessWarning = document.getElementById("guessWarning");
 const guessForm = document.getElementById("guessForm");
+const result = document.getElementById("result");
 let currentGuess;
 let guessedWords = []; // all letter guesses
 let layer1Guess = []; // first three incorrect guesses
@@ -134,7 +135,13 @@ function singleplayerSetup() {
 // Event Listener to receive user inputted letter guesses
 guessBtn.addEventListener('click', getInputValue);
 
-
+guessForm.addEventListener('keypress', (e) => {
+    if (e.key == "Enter") {
+        console.log("yep")
+        getInputValue();
+    }
+    console.log("no")
+});
 
 // Receives user inputted value and ensures its an alphabetical letter not yet guessed
 // Calls checkInput function if a valid new letter
@@ -173,6 +180,11 @@ function checkInput() {
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
         ctx.fillText(display.textContent, x, y+130);
+        if (!displayArray.includes("_")) {
+            guess.classList.toggle('conceal');
+            result.classList.toggle('conceal');
+            result.textContent = "CONGRATULATIONS YOU WIN!";
+        }
     }
 }
 
@@ -209,10 +221,12 @@ function incorrectGuess() {
             layer2Guess.push(currentGuess);
             const hm6 = document.getElementById("hangman6");
             ctx.drawImage(hm6, hsX, hsY, hsWidth, hsHeight);
-            console.log("YOU DEAD")
+            guess.classList.toggle('conceal');
+            result.classList.toggle('conceal');
+            result.textContent = "YOU LOSE! THE WORD WAS: " + word.textContent.toUpperCase() + "!";
             break;
         default:
-            console.log("ALREADY DEAD")
+            console.log("Error");
             break;
     }
     console.log(layer1Guess);

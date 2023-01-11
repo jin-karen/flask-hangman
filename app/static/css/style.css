@@ -114,3 +114,9 @@ color: #084A59;
     font-size: 18px;
     color: #B3351E;
 }
+
+#result {
+    position: relative;
+    bottom: 120px;
+    color: #084A59;
+}
