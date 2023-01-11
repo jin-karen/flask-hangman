@@ -106,10 +106,14 @@ const displayArray = display.textContent.split(" ");
 const guessBtn = document.getElementById("guessBtn");
 const guessText = document.getElementById("guessText");
 const guessWarning = document.getElementById("guessWarning");
+const guessForm = document.getElementById("guessForm");
 let currentGuess;
 let guessedWords = []; // all letter guesses
 let layer1Guess = []; // first three incorrect guesses
 let layer2Guess = []; // last three incorrect guesses
+
+
+
 
 // Singleplayer hangman game setup after clicking start
 function singleplayerSetup() {
@@ -127,10 +131,13 @@ function singleplayerSetup() {
     
 }
 
-
 // Event Listener to receive user inputted letter guesses
 guessBtn.addEventListener('click', getInputValue);
 
+
+
+// Receives user inputted value and ensures its an alphabetical letter not yet guessed
+// Calls checkInput function if a valid new letter
 function getInputValue() {
     currentGuess = guessText.value;
     guessText.value = "";
@@ -146,6 +153,8 @@ function getInputValue() {
     }
 }
 
+// Checks to see if user inputted letter is in the word
+// Either displays letters within word or calls incorrectGuess function
 function checkInput() {
     const word = document.getElementById("word");
     let minOne = false;
@@ -158,14 +167,22 @@ function checkInput() {
     }
     if (!minOne) {
         incorrectGuess();
+    } else {
+        display.textContent = displayArray.join(" ");
+        ctx.font = "40px monospace";
+        ctx.fillStyle = "black";
+        ctx.textAlign = "center";
+        ctx.fillText(display.textContent, x, y+130);
     }
 }
 
+// Updates hangman and letter display if guess is not in the word
 function incorrectGuess() {
+    // Incorrect hangman display
     switch (true) {
         case (layer1Guess.length == 0):
             layer1Guess.push(currentGuess);
-            const hm1 = document.getElementById("hangman1");
+            const hm1 = document.getElementById("hangman1");     
             ctx.drawImage(hm1, hsX, hsY, hsWidth, hsHeight);
             break;
         case (layer1Guess.length == 1):
@@ -192,46 +209,21 @@ function incorrectGuess() {
             layer2Guess.push(currentGuess);
             const hm6 = document.getElementById("hangman6");
             ctx.drawImage(hm6, hsX, hsY, hsWidth, hsHeight);
+            console.log("YOU DEAD")
             break;
         default:
-            console.log("DEAD")
+            console.log("ALREADY DEAD")
             break;
     }
-    // if (layer1Guess.length<3) {
-    //     layer1Guess.push(currentGuess);
-    // } else if (layer1Guess.length==3 && layer2Guess.length<3) {
-    //     layer2Guess.push(currentGuess);
-    // } else {
-    //     console.log("DEAD");
-    // }
     console.log(layer1Guess);
     console.log(layer2Guess);
-    // Guessed Words Display
+    // Incorrect Guessed Words Display
     ctx.font = "37px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "left";
     ctx.fillText(layer1Guess.join(" "), x*1.26, y*.69);
     ctx.fillText(layer2Guess.join(" "), x*1.26, y*.80);
 }
-
-// // Incorrect Guess Hangman Display
-// const hm1 = document.getElementById("hangman1");
-// ctx.drawImage(hm1, hsX, hsY, hsWidth, hsHeight);
-
-// const hm2 = document.getElementById("hangman2");
-// ctx.drawImage(hm2, hsX, hsY, hsWidth, hsHeight);
-
-// const hm3 = document.getElementById("hangman3");
-// ctx.drawImage(hm3, hsX, hsY, hsWidth, hsHeight);
-
-// const hm4 = document.getElementById("hangman4");
-// ctx.drawImage(hm4, hsX, hsY, hsWidth, hsHeight);
-
-// const hm5 = document.getElementById("hangman5");
-// ctx.drawImage(hm5, hsX, hsY, hsWidth, hsHeight);
-
-// const hm6 = document.getElementById("hangman6");
-// ctx.drawImage(hm6, hsX, hsY, hsWidth, hsHeight);
 
 
 
