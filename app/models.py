@@ -58,9 +58,11 @@ class User(UserMixin, db.Model):
 # Database Game Model
 class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    game_won = db.Column(db.Boolean, unique=False, default=True)
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    word = db.Column(db.String(64))
     opponent = db.Column(db.String(64))
+    game_won = db.Column(db.Boolean, default=True)
+    incorrect_guesses = (db.Integer)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
