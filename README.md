@@ -21,3 +21,4 @@ html canvas - access with javascript canvas/context, window.devicePixelRatio, mo
 event listeners - once property, remove function
 javascript api requests
 Flask created an api for post requests
+currently only singleplayer 

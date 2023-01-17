@@ -31,23 +31,23 @@ function canvasGBG(canvas, context) {
 }
 
 // Create Canvas Start Button 
-function startBtn() {
-    ctx.fillStyle = "#084A59";
-    ctx.strokeStyle = "#F3EDE0";
-    ctx.lineWidth = 6;
-    ctx.beginPath()
-    ctx.roundRect(x-(startBtnWidth/2), y-(startBtnHeight/2), startBtnWidth, startBtnHeight, startBtnRadii);
-    ctx.fill();
-    ctx.stroke();
-    ctx.font = "30px monospace";
-    ctx.fillStyle = "#F3EDE0";
-    ctx.fillText("Start Game", x-(startBtnWidth/2)+20, y+10);
+function startBtn(context) {
+    context.fillStyle = "#084A59";
+    context.strokeStyle = "#F3EDE0";
+    context.lineWidth = 6;
+    context.beginPath()
+    context.roundRect(x-(startBtnWidth/2), y-(startBtnHeight/2), startBtnWidth, startBtnHeight, startBtnRadii);
+    context.fill();
+    context.stroke();
+    context.font = "30px monospace";
+    context.fillStyle = "#F3EDE0";
+    context.fillText("Start Game", x-(startBtnWidth/2)+20, y+10);
 }
 
 // Draw Start Canvas
 function startCanvas() {
     canvasGBG(c, ctx);
-    startBtn();
+    startBtn(ctx);
 }
 
 // Call startCanvas function to load canvas when window has loaded
@@ -272,32 +272,3 @@ async function postGame(url='', data={}) {
 }
 
   
-
-
-
-
-// // two_player_hangman.html Page
-// // Set up for Two Player hangman game canvas
-// const sc = document.getElementById("twoPlayerCanvas");
-// const sctx = sc.getContext("2d");
-// // Canvas width and height set in CSS file (remove blurriness)
-// c.width = c.offsetWidth * dpi;
-// c.height = c.offsetHeight * dpi;
-// //Normalize coordinate system to use CSS pixels
-// ctx.scale(dpi,dpi);
-// // Center text in singplayer game canvas
-// const sx = sc.width / 2
-// const sy = sc.height / 2
-// // ctx.textAlign = 'center';
-
-
-// // Circle gradient
-// const sky_gradient = ctx.createRadialGradient(200, 200, 50, 200, 200, 300);
-// sky_gradient.addColorStop(0, "#9E99BF");
-// sky_gradient.addColorStop(1, "#F2D5DB");
-// ctx.fillStyle = sky_gradient;
-// ctx.fillRect(0, 0, c.width, c.height);
-
-
-
-

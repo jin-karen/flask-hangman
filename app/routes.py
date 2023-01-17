@@ -154,7 +154,3 @@ def post_results():
     else:
         return {'message': 'Error, game not saved because user is guest'}, 400
 
-# App.route Decorator and View Function for Two Player Hangman Game Page
-@app.route('/two_player_hangman')
-def two_player_hangman():
-    return render_template('two_player_hangman.html', title='Hangman Game', bg_class='hangmanGamePage')
