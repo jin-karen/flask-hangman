@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, url_for
 from app import app
 from app.forms import LoginForm
 from flask_login import current_user, login_user
-from app.models import User
+from app.models import User, Game
 from flask_login import logout_user
 from flask_login import login_required
 from flask import request
@@ -141,6 +141,18 @@ def singleplayer_hangman():
     word = pick_word(words)
     display = hide_word(word)
     return render_template('singleplayer_hangman.html', title='Hangman Game', bg_class='hangmanGamePage', word=word, display=display)
+
+# App.route Decorator and View Function for API to Post Hangman Game Results
+@app.route('/post_results', methods=['POST'])
+def post_results():
+    if current_user.is_authenticated and request.method == 'POST':
+        data = request.get_json()
+        game = Game(word=data["word"], opponent=data["opponent"], game_won=data["game_won"], incorrect_guesses=data["incorrect_guesses"], user_id=current_user.id)
+        db.session.add(game)
+        db.session.commit()
+        return data, 200
+    else:
+        return {'message': 'Error, game not saved because user is guest'}, 400
 
 # App.route Decorator and View Function for Two Player Hangman Game Page
 @app.route('/two_player_hangman')

@@ -103,6 +103,7 @@ const hsY = 20;
 // Guess form for hangman game
 const display = document.getElementById("display");
 const displayArray = display.textContent.split(" ");
+const guess = document.getElementById("guess");
 const guessBtn = document.getElementById("guessBtn");
 const guessText = document.getElementById("guessText");
 const guessWarning = document.getElementById("guessWarning");
@@ -127,7 +128,6 @@ function singleplayerSetup() {
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText(display.textContent, x, y+130);
-    const guess = document.getElementById("guess");
     guess.classList.toggle('conceal');
     
 }
@@ -181,12 +181,10 @@ function checkInput() {
         ctx.textAlign = "center";
         ctx.fillText(display.textContent, x, y+130);
         if (!displayArray.includes("_")) {
-            guess.classList.toggle('conceal');
-            result.classList.toggle('conceal');
-            result.textContent = "CONGRATULATIONS YOU WIN!";
+            winGame(true);
         }
     }
-}
+};
 
 // Updates hangman and letter display if guess is not in the word
 function incorrectGuess() {
@@ -221,9 +219,7 @@ function incorrectGuess() {
             layer2Guess.push(currentGuess);
             const hm6 = document.getElementById("hangman6");
             ctx.drawImage(hm6, hsX, hsY, hsWidth, hsHeight);
-            guess.classList.toggle('conceal');
-            result.classList.toggle('conceal');
-            result.textContent = "YOU LOSE! THE WORD WAS: " + word.textContent.toUpperCase() + "!";
+            winGame(false);
             break;
         default:
             console.log("Error");
@@ -238,6 +234,43 @@ function incorrectGuess() {
     ctx.fillText(layer1Guess.join(" "), x*1.26, y*.69);
     ctx.fillText(layer2Guess.join(" "), x*1.26, y*.80);
 }
+
+// Reveal win or lose result and post game information to database
+function winGame(outcome) {
+    guess.classList.toggle('conceal');
+    result.classList.toggle('conceal');
+    if (outcome == "win") {
+        result.textContent = "CONGRATULATIONS YOU WIN!";
+    } else if (outcome == "loss") {
+        result.textContent = "YOU LOSE! THE WORD WAS: " + word.textContent.toUpperCase() + "!";
+    }
+    let game = {
+        word: word.textContent,
+        opponent: "computer",
+        game_won: outcome,
+        incorrect_guesses: layer1Guess.length + layer2Guess.length,
+    };
+    console.log(game);
+    postGame('http://localhost:5000/post_results', game)
+        .then((result) => {
+            console.log(result);
+            console.log(typeof(result));
+        });
+}
+
+async function postGame(url='', data={}) {
+    const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(data)
+    });
+    let result = await response.json();
+    return result;
+}
+
+  
 
 
 

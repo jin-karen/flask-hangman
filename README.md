@@ -9,6 +9,7 @@ migrations directory - explanation and use
 "flask db upgrade" - migration given and schema from models but no database - update to get all tables
 following tutorial
 new word list https://www.desiquintans.com/nounlist 6800 - added filtered and converted to json with python
+fetch - wont work for older browsers
 
 new:
 flask - routes, html template, forms, database (SQLAlchemy), static files, environment variables, configuration, jinja2, sending emails, password encryption, custom error pages
@@ -18,3 +19,5 @@ gitignore
 requirements.txt
 html canvas - access with javascript canvas/context, window.devicePixelRatio, mouse positions, rectangles, paths w/ strokes and fill, background, buttons/border-radius, draw image, gradients, etc.
 event listeners - once property, remove function
+javascript api requests
+Flask created an api for post requests
