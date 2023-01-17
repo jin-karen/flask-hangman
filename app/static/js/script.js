@@ -109,12 +109,11 @@ const guessText = document.getElementById("guessText");
 const guessWarning = document.getElementById("guessWarning");
 const guessForm = document.getElementById("guessForm");
 const result = document.getElementById("result");
+const endBtns = document.getElementById("endBtns");
 let currentGuess;
 let guessedWords = []; // all letter guesses
 let layer1Guess = []; // first three incorrect guesses
 let layer2Guess = []; // last three incorrect guesses
-
-
 
 
 // Singleplayer hangman game setup after clicking start
@@ -239,9 +238,10 @@ function incorrectGuess() {
 function winGame(outcome) {
     guess.classList.toggle('conceal');
     result.classList.toggle('conceal');
-    if (outcome == "win") {
+    endBtns.classList.toggle('conceal');
+    if (outcome == true) {
         result.textContent = "CONGRATULATIONS YOU WIN!";
-    } else if (outcome == "loss") {
+    } else if (outcome == false) {
         result.textContent = "YOU LOSE! THE WORD WAS: " + word.textContent.toUpperCase() + "!";
     }
     let game = {
@@ -252,12 +252,13 @@ function winGame(outcome) {
     };
     console.log(game);
     postGame('http://localhost:5000/post_results', game)
-        .then((result) => {
-            console.log(result);
-            console.log(typeof(result));
+        .then((verdict) => {
+            console.log(verdict);
+            console.log(typeof(verdict));
         });
 }
 
+// API Post Request to post game information and results to database
 async function postGame(url='', data={}) {
     const response = await fetch(url, {
             method: 'POST',
@@ -266,8 +267,8 @@ async function postGame(url='', data={}) {
             },
             body: JSON.stringify(data)
     });
-    let result = await response.json();
-    return result;
+    let verdict = await response.json();
+    return verdict;
 }
 
   

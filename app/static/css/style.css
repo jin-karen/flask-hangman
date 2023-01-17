@@ -117,6 +117,20 @@ color: #084A59;
 
 #result {
     position: relative;
-    bottom: 120px;
+    bottom: 135px;
     color: #084A59;
+}
+
+#endBtns {
+    position: relative;
+    bottom: 120px;
+}
+
+.endBtn {
+    border-radius: 5px;
+    border-color: #084A59;
+    font-family: monospace;
+    font-weight: bold;
+    height: 50px;
+    width: 150px;
 }

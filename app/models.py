@@ -66,7 +66,7 @@ class Game(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Game with {}>'.format(self.opponent)
+        return "<{}'s Game with {}>".format(self.user_id, self.opponent)
 
 # User Loader for Flask_Login to Check current_user        
 @login.user_loader
