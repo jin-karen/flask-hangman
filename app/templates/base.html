@@ -32,14 +32,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('play_hangman') }}">Play Game</a>
+                        </li>
                         {% if current_user.is_anonymous %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('login') }}">Login</a>
                         </li>
                         {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('play_hangman') }}">Play Game</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">Profile</a>
                         </li>

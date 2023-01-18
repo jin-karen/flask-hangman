@@ -2,6 +2,10 @@ html {
     height:100%;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Centered Text and Elements text-align: center;*/
 .center {
     display: flex;
@@ -20,9 +24,17 @@ html {
     color: #EBE0D2;
 }
 
-/* .textStroke{
-    -webkit-text-stroke: 2px #084A59;
-} */
+.blackText {
+    color: black;
+}
+
+.largeBtn {
+    height: 60px;
+}
+
+.loginPage {
+    background-color: #4193A6;
+}
 
 /* CSS for Hangman Game Pages */
 .hangmanGamePage {
@@ -61,11 +73,6 @@ html {
     transform: scale(1.05) translateY(3px);
     box-shadow: 0 0 10px 1px;
 }
-
-
-
-
-
 
 /* Canvas for Hangman Game Play Pages*/
 #singleplayerCanvas {
