@@ -21,7 +21,16 @@ from app.gameplay import pick_word, hide_word
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title='Home', login=login)
+    if current_user.is_authenticated:
+        games_played = Game.query.filter_by(user_id=current_user.id).count()
+        games_won = Game.query.filter_by(user_id=current_user.id, game_won=True).count()
+        games_lost = Game.query.filter_by(user_id=current_user.id, game_won=False).count()
+    else:
+        games_played=0 
+        games_won=0
+        games_lost=0
+    return render_template('index.html', title='Home', login=login, bg_class='homePage', 
+                            games_played=games_played, games_won=games_won, games_lost=games_lost)
 
 # App.route Decorator and View Function for Login Page
 # Uses Login Form, Validates User Login Information, Redirects URLs
@@ -62,15 +71,19 @@ def register():
         db.session.commit()
         flash('Success! Congratulations, you are now a registered user. Login now!')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', title='Register', form=form, bg_class='loginPage')
 
 # App.route Decorator and View Function for User Profile Page
 # Protected Page - Login Required
-@app.route('/user/<username>')
+@app.route('/profile/<username>')
 @login_required
-def user(username):
+def profile(username):
     user =  User.query.filter_by(username=username).first_or_404()
-    return render_template('user.html', title="Profile Page", user=user)
+    games_played = Game.query.filter_by(user_id=current_user.id).count()   
+    games_won = Game.query.filter_by(user_id=current_user.id, game_won=True).count()
+    games_lost = Game.query.filter_by(user_id=current_user.id, game_won=False).count()
+    return render_template('profile.html', title="Profile Page", user=user, bg_class='homePage', 
+                            games_played=games_played, games_won=games_won, games_lost=games_lost)
 
 # App.route Decorator and View Function for Edit Profile Page
 # Protected Page - Login Required
@@ -83,11 +96,11 @@ def edit_profile():
         current_user.about_me = form.about_me.data
         db.session.commit()
         flash('Success! Your changes have been saved.')
-        return redirect(url_for('user', username=current_user.username))
+        return redirect(url_for('profile', username=current_user.username))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.html', title='Edit Profile', form=form)
+    return render_template('edit_profile.html', title='Edit Profile', form=form, bg_class='homePage',)
 
 # App.route Decorator and View Function for Reset Password Request Page
 # Allows User to Request for a New Password to be Sent to Email

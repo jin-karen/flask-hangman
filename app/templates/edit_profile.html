@@ -2,23 +2,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Edit Profile</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.about_me.label }}<br>
-            {{ form.about_me(cols=50, rows=4) }}<br>
-            {% for error in form.about_me.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+    <div class="row justify-content-center mt-5" >
+        <div class="col-sm-8 col-md-6 col-lg-5 col-xl-3 card p-4 mt-5">
+            <div class="card-body">
+                <h1 class="text-center">Edit Profile</h1>
+                <form action="" method="post">
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {{ form.username.label }}<br>
+                        {{ form.username(class_="form-control", size=32) }}
+                        {% for error in form.username.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.about_me.label }}<br>
+                        {{ form.about_me(class_="form-control", cols=50, rows=4) }}
+                        {% for error in form.about_me.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p class="text-center d-grid mb-4">{{ form.submit(class_="btn btn-primary") }}</p>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -5,35 +5,35 @@
     <div class="row justify-content-center mt-5" >
         <div class="col-sm-8 col-md-6 col-lg-5 col-xl-3 card p-4 mt-5">
             <div class="card-body">
-            <h1 class="text-center">Sign In</h1>
-            <!--Form Template for Login Form-->
-            <form action="" method="post" novalidate>
-                {{ form.hidden_tag() }}
-                <p>
-                    {{ form.username.label }}<br>
-                    {{ form.username(class_="form-control", size=32) }}
-                    {% for error in form.username.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}
-                </p>
-                <p>
-                    {{ form.password.label }}<br>
-                    {{ form.password(class_="form-control", size=32) }}
-                    {% for error in form.password.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}
-                </p>
-                <div class="row justify-content-center text-center" >
-                    <p class="col-sm-6">{{ form.remember_me(class_="form-check-input") }} {{ form.remember_me.label }}</p>
-                    <p class="col-sm-6"><a href="{{ url_for('reset_password_request') }}" class="blackText">Forgot Password?</a></p>
+                <h1 class="text-center">Sign In</h1><br>
+                <!--Form Template for Login Form-->
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {{ form.username.label }}<br>
+                        {{ form.username(class_="form-control", size=32) }}
+                        {% for error in form.username.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.password.label }}<br>
+                        {{ form.password(class_="form-control", size=32) }}
+                        {% for error in form.password.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <div class="row justify-content-center text-center" >
+                        <p class="col-sm-6">{{ form.remember_me(class_="form-check-input") }} {{ form.remember_me.label }}</p>
+                        <p class="col-sm-6"><a href="{{ url_for('reset_password_request') }}" class="blackText">Forgot Password?</a></p>
+                    </div>
+                    <p class="text-center d-grid mb-4">{{ form.submit(class_="btn btn-primary") }}</p>
+                </form>
+                <hr>
+                <div class="text-center my-4">
+                    <p>Don't have an account?</p>
+                    <a href="{{ url_for('register') }}"><button type="button" class="btn btn-secondary largeBtn">Create an Account</button></a>
                 </div>
-                <p class="text-center d-grid mb-4">{{ form.submit(class_="btn btn-primary") }}</p>
-            </form>
-            <hr>
-            <div class="text-center my-4">
-                <p>Don't have an account?</p>
-                <a href="{{ url_for('register') }}"><button type="button" class="btn btn-secondary largeBtn">Create an Account</button></a>
-            </div>
             </div>
         </div>
     </div>
