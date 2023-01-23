@@ -21,16 +21,7 @@ from app.gameplay import pick_word, hide_word
 @app.route('/')
 @app.route('/index')
 def index():
-    if current_user.is_authenticated:
-        games_played = Game.query.filter_by(user_id=current_user.id).count()
-        games_won = Game.query.filter_by(user_id=current_user.id, game_won=True).count()
-        games_lost = Game.query.filter_by(user_id=current_user.id, game_won=False).count()
-    else:
-        games_played=0 
-        games_won=0
-        games_lost=0
-    return render_template('index.html', title='Home', login=login, bg_class='adminPage', 
-                            games_played=games_played, games_won=games_won, games_lost=games_lost)
+    return render_template('index.html', title='Home', login=login, bg_class='adminPage')
 
 # App.route Decorator and View Function for Login Page
 # Uses Login Form, Validates User Login Information, Redirects URLs

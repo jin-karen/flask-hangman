@@ -13,10 +13,6 @@
     <div class="center mt-5">
         <img src="{{ url_for('static', filename='img/hangman_logo.png') }}" style="width:500px;" alt="Hangman Logo">
     </div>
-    <div class="center row text-center mt-5">
-        <h3 class="col-md-2">Games Played: {{ games_played }}</h3><br>
-        <h3 class="col-md-2">Games Won: {{ games_won }}</h3><br>
-        <h3 class="col-md-2">Games Lost: {{ games_lost }}</h3>
-    </div>
+    <h2 class="center mt-5">Welcome back to Hangman!</h2>
     {% endif %}
 {% endblock %}
