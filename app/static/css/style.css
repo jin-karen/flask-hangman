@@ -1,13 +1,15 @@
+/* ===General CSS=== */
+/* HTML CSS */
 html {
     height:100%;
 }
 
-/* Removes underline from all links*/
+/* Link Style: Removes Underline */
 a {
     text-decoration: none;
 }
 
-/* Centered Text and Elements text-align: center;*/
+/* Centers Text and Elements */
 .center {
     display: flex;
     justify-content: center;
@@ -15,7 +17,7 @@ a {
     gap: 20px;
 }
 
-/* Large Title */
+/* Large Title Style */
 .largeTitle {
     font-size: 600%;
 }
@@ -40,26 +42,35 @@ a {
     height: 60px;
 }
 
-
+/* Light Border Style*/
 .lightBorder {
     border: 3px solid #E1D1BC;
     border-radius: 10px;
 }
 
-/* Style for Navigation Bar Items*/
+/* Class to Hide Elements*/
+.conceal {
+    display: none;
+}
+
+
+/* ===Navigation Bar Items===*/
+/* CSS for Each Nav Item */
 .navItem {
     color: #BEBEBE;
 }
 
+/* Hover Selector for Nav Items */
 .navItem:hover {
     color: white;
 }
 
-/* CSS for Homepage */
-.homePage {
+
+/* ===Background for Different Pages=== */
+/* CSS for Home and Profile */
+.adminPage {
     height:100%;
     background-image: linear-gradient(#E1D1BC, #EBE0D2);
-    /*background-image: linear-gradient(#E8CEB0,#E1D1BC, #EBE0D2);*/
     width: 100%;
     height: 100%;
 }
@@ -70,7 +81,6 @@ a {
     background-image: linear-gradient(#4193A6,#4ba4b8, #73b8c8);
     width: 100%;
     height: 100%;
-    /*background-color: #4193A6;*/
 }
 
 /* CSS for Hangman Game Pages */
@@ -79,14 +89,10 @@ a {
     background-image: linear-gradient(#084A59,#156A7D, #187D94);
     width: 100%;
     height: 100%;
-    /**/
 }
 
 
-.conceal {
-    display: none;
-}
-
+/* ===play_hangman.html CSS=== */
 /* Start Page Button to Choose Game Mode */
 .startBtn {
     border: 3px solid #084A59;
@@ -112,6 +118,8 @@ a {
     box-shadow: 0 0 10px 1px;
 }
 
+
+/* ===singleplayer_hangman.html CSS=== */
 /* Canvas for Hangman Game Play Pages*/
 #singleplayerCanvas {
     width: 900px; /*650px*/
@@ -119,10 +127,12 @@ a {
     border: 7px solid #333333;
 }
 
+/* Logo displayed on the play_hangman Page*/
 #startLogo {
     width: 400px;
 }
 
+/* Div in singleplayer_hangman Page for Guess Section */
 #guess {
     display: flexbox;
     flex-direction: column;
@@ -131,10 +141,12 @@ a {
     gap: 2px;
 }
 
+/* Heading in singleplayer_hangman page Guess Section */
 #guessTitle {
     color: #084A59;
 }
 
+/* Input Children within Guess Form in Guess Section*/
 .guessElement{
     border-radius: 5px;
     border-color: #084A59;
@@ -142,35 +154,39 @@ a {
     height: 40px;
 }
 
+/* First Input Child in Guess Form for User Inputted Guesses */
 #guessText {
     text-align: center;
 }
 
+/* Second Input Child in Guess Form for Submitting Guesses */
 #guessBtn {
     background-color: #084A59;
     color: #EBE0D2;
     font-size: 20px;
 }
-/*
-color: #084A59;
-*/
+
+/* Warning Display Below Guess Form */
 #guessWarning {
     padding-top: 10px;
     font-size: 18px;
     color: #B3351E;
 }
 
+/* Result Display After Game Ends */
 #result {
     position: relative;
     bottom: 135px;
     color: #084A59;
 }
 
+/* End Buttons Div for Two Ending Buttons */
 #endBtns {
     position: relative;
     bottom: 120px;
 }
 
+/* Ending Buttons Displayed at the End of Game */
 .endBtn {
     border-radius: 5px;
     border-color: #084A59;

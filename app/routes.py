@@ -29,7 +29,7 @@ def index():
         games_played=0 
         games_won=0
         games_lost=0
-    return render_template('index.html', title='Home', login=login, bg_class='homePage', 
+    return render_template('index.html', title='Home', login=login, bg_class='adminPage', 
                             games_played=games_played, games_won=games_won, games_lost=games_lost)
 
 # App.route Decorator and View Function for Login Page
@@ -82,7 +82,7 @@ def profile(username):
     games_played = Game.query.filter_by(user_id=current_user.id).count()   
     games_won = Game.query.filter_by(user_id=current_user.id, game_won=True).count()
     games_lost = Game.query.filter_by(user_id=current_user.id, game_won=False).count()
-    return render_template('profile.html', title="Profile Page", user=user, bg_class='homePage', 
+    return render_template('profile.html', title="Profile Page", user=user, bg_class='adminPage', 
                             games_played=games_played, games_won=games_won, games_lost=games_lost)
 
 # App.route Decorator and View Function for Edit Profile Page
@@ -100,7 +100,7 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.html', title='Edit Profile', form=form, bg_class='homePage',)
+    return render_template('edit_profile.html', title='Edit Profile', form=form, bg_class='adminPage',)
 
 # App.route Decorator and View Function for Reset Password Request Page
 # Allows User to Request for a New Password to be Sent to Email
