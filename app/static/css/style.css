@@ -9,14 +9,6 @@ a {
     text-decoration: none;
 }
 
-/* Centers Text and Elements */
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
 /* Large Title Style */
 .largeTitle {
     font-size: 600%;

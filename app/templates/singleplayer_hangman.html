@@ -2,9 +2,9 @@
 {% extends "base_hangman.html" %}
 
 {% block game %}
-    <h3 class="center lightText">Single Player</h3>
+    <h3 class="text-center lightText">Single Player</h3>
     <br>
-    <div class="center">
+    <div class="text-center">
         <canvas id="singleplayerCanvas" ></canvas>
         <div class="conceal">
             <img id="hangmanSetup" src="{{ url_for('static', filename='img/hangman_setup.png') }}">
@@ -19,16 +19,16 @@
             <div id="display">{{ display }}</div>
         </div>
     </div>
-    <div class="center conceal" id="guess">
+    <div class="text-center conceal" id="guess">
         <h4 id="guessTitle">What letter would you like to pick?</h4>
-        <form class="center" onsubmit="return false" id="guessForm">
+        <form class="text-center" onsubmit="return false" id="guessForm">
             <input class="guessElement" type="text" size="10" maxlength="1" autocomplete="off" id="guessText">
             <input class="guessElement" type="button" value="ENTER" id="guessBtn">
         </form>
         <h5 id="guessWarning"></h5>
     </div>
-    <h4 class="center conceal" id="result"></h4>
-    <div class="center conceal" id="endBtns">
+    <h4 class="text-center conceal" id="result"></h4>
+    <div class="text-center conceal" id="endBtns">
         <a href="{{ url_for('singleplayer_hangman') }}"><button class="endBtn">Play Again</button></a>
         <a href="{{ url_for('index') }}"><button class="endBtn">Return to Home</button></a>
     </div>
