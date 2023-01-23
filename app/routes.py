@@ -163,7 +163,7 @@ def post_results():
         game = Game(word=data["word"], opponent=data["opponent"], game_won=data["game_won"], incorrect_guesses=data["incorrect_guesses"], user_id=current_user.id)
         db.session.add(game)
         db.session.commit()
-        return data, 200
+        return {'message': 'Success, game results were posted'}, 200
     else:
         return {'message': 'Error, game not saved because user is guest'}, 400
 

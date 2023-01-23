@@ -14,7 +14,6 @@ ctx.scale(dpi,dpi);
 const x = c.width / 2
 const y = c.height / 2
 
-
 // Start button 
 const startBtnWidth = 200;
 const startBtnHeight = 100;
@@ -84,8 +83,6 @@ c.addEventListener('click', (e) => {
     };
     if (mousePos.x > (x-(startBtnWidth/2)) && mousePos.x < (x+(startBtnWidth/2))) {
         if (mousePos.y > (y-(startBtnHeight/2)) && mousePos.y < (y+(startBtnHeight/2))) {
-            // c.classList.toggle('conceal');
-            // sc.classList.toggle('conceal');
             c.removeEventListener('mousemove', startPointer);
             c.style.cursor = "default";
             canvasGBG(c, ctx);
@@ -100,7 +97,7 @@ const hsHeight = 350;
 const hsX = x-hsWidth+60;
 const hsY = 20;
 
-// Guess form for hangman game
+// Setup for hangman gameplay: word display, guess form, result, end buttons, guesses
 const display = document.getElementById("display");
 const displayArray = display.textContent.split(" ");
 const guess = document.getElementById("guess");
@@ -122,7 +119,6 @@ function singleplayerSetup() {
     ctx.drawImage(hs, hsX, hsY, hsWidth, hsHeight);
     const blender = document.getElementById("blender");
     ctx.drawImage(blender, x, hsY, hsWidth, hsHeight);
-    console.log(display.textContent);
     ctx.font = "40px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
@@ -131,15 +127,14 @@ function singleplayerSetup() {
     
 }
 
-// Event Listener to receive user inputted letter guesses
+// Event Listener to receive user inputted letter guesses from enter btn
 guessBtn.addEventListener('click', getInputValue);
 
+// Event Listener to receive user inputted letter guesses from pressing enter
 guessForm.addEventListener('keypress', (e) => {
     if (e.key == "Enter") {
-        console.log("yep")
         getInputValue();
     }
-    console.log("no")
 });
 
 // Receives user inputted value and ensures its an alphabetical letter not yet guessed
@@ -148,7 +143,6 @@ function getInputValue() {
     currentGuess = guessText.value;
     guessText.value = "";
     guessWarning.textContent = "";
-    console.log(currentGuess);
     if (guessedWords.includes(currentGuess)) {
         guessWarning.textContent = "You guessed this letter already!";
     } else if (currentGuess.toLowerCase() == currentGuess.toUpperCase()) {
@@ -161,10 +155,10 @@ function getInputValue() {
 
 // Checks to see if user inputted letter is in the word
 // Either displays letters within word or calls incorrectGuess function
+// Calls winGame function with true argument if all letters are correctly guessed
 function checkInput() {
     const word = document.getElementById("word");
     let minOne = false;
-    console.log(displayArray);
     for (let i = 0; i < word.textContent.length; i++) {
         if (word.textContent[i] == currentGuess) {
             displayArray[i] = currentGuess;
@@ -186,6 +180,7 @@ function checkInput() {
 };
 
 // Updates hangman and letter display if guess is not in the word
+// Calls winGame function with false argument when 6 letters are incorrectly guessed
 function incorrectGuess() {
     // Incorrect hangman display
     switch (true) {
@@ -224,8 +219,6 @@ function incorrectGuess() {
             console.log("Error");
             break;
     }
-    console.log(layer1Guess);
-    console.log(layer2Guess);
     // Incorrect Guessed Words Display
     ctx.font = "37px monospace";
     ctx.fillStyle = "black";
@@ -234,7 +227,8 @@ function incorrectGuess() {
     ctx.fillText(layer2Guess.join(" "), x*1.26, y*.80);
 }
 
-// Reveal win or lose result and post game information to database
+// Function to reveal win or loss result
+// Calls postGame function to send game information to database
 function winGame(outcome) {
     guess.classList.toggle('conceal');
     result.classList.toggle('conceal');
@@ -250,11 +244,9 @@ function winGame(outcome) {
         game_won: outcome,
         incorrect_guesses: layer1Guess.length + layer2Guess.length,
     };
-    console.log(game);
     postGame('http://localhost:5000/post_results', game)
         .then((verdict) => {
             console.log(verdict);
-            console.log(typeof(verdict));
         });
 }
 
