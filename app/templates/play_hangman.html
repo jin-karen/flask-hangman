@@ -3,7 +3,7 @@
 
 {% block game %}
     <div class="text-center mt-5">
-        <img id="startLogo" src="{{ url_for('static', filename='img/start_logo.png') }}">
+        <img class="img-fluid" id="startLogo" src="{{ url_for('static', filename='img/start_logo.png') }}">
     </div>
     <div class="text-center mt-5">
         <a href="{{ url_for('singleplayer_hangman') }}"><button class="startBtn">Single Player Hangman</button></a>

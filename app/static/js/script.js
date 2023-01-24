@@ -91,12 +91,6 @@ c.addEventListener('click', (e) => {
     }
 {once : true}});
 
-// Hangman image setup: width, height, x, y
-const hsWidth = 350;
-const hsHeight = 350;
-const hsX = x-hsWidth+60;
-const hsY = 20;
-
 // Setup for hangman gameplay: word display, guess form, result, end buttons, guesses
 const display = document.getElementById("display");
 const displayArray = display.textContent.split(" ");
@@ -112,19 +106,83 @@ let guessedWords = []; // all letter guesses
 let layer1Guess = []; // first three incorrect guesses
 let layer2Guess = []; // last three incorrect guesses
 
+// Hangman image setup: width, height, x, y, display word's y
+let hsWidth = 350;
+let hsHeight = 350;
+let hsX = x-hsWidth+60;
+let hsY = 20;
+let displayY = y+130;
+let displaySize = "40px monospace";
+let incorrectSize = "37px monospace";
+let incorrectX = x*1.26;
+let l1Y = y*.69;
+let l2Y = y*.80;
 
 // Singleplayer hangman game setup after clicking start
 function singleplayerSetup() {
+    checkScreenSize();
     const hs = document.getElementById("hangmanSetup");
     ctx.drawImage(hs, hsX, hsY, hsWidth, hsHeight);
     const blender = document.getElementById("blender");
     ctx.drawImage(blender, x, hsY, hsWidth, hsHeight);
-    ctx.font = "40px monospace";
+    ctx.font = displaySize;
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
-    ctx.fillText(display.textContent, x, y+130);
+    ctx.fillText(display.textContent, x, displayY);
     guess.classList.toggle('conceal');
-    
+}
+
+// Function adjusts hangman setup display items for smaller screens
+function checkScreenSize() {
+    if (window.innerWidth <= 320) {
+        hsWidth = 180;
+        hsHeight = 180;
+        hsX = x-hsWidth+40;
+        hsY = 40;
+        displayY = y;
+        displaySize = "20px monospace";
+        incorrectSize = "18px monospace";
+        incorrectX = x*1.41;
+        l1Y = y*.45;
+        l2Y = y*.52;
+    } else if (window.innerWidth <= 420) {
+        hsWidth = 180;
+        hsHeight = 180;
+        hsX = x-hsWidth+40;
+        hsY = 60;
+        displayY = y+40;
+        displaySize = "25px monospace";
+        incorrectSize = "20px monospace";
+        incorrectX = x*1.42;
+        l1Y = y*.52;
+        l2Y = y*.59;   
+    } else if (window.innerWidth <= 520) {
+        hsWidth = 250;
+        hsHeight = 250;
+        hsX = x-hsWidth+60;
+        hsY = 20;
+        displayY = y+80;
+        displaySize = "35px monospace";
+        incorrectSize = "25px monospace";
+        incorrectX = x*1.45;
+        l1Y = y*.52;
+        l2Y = y*.6;
+    } else if (window.innerWidth <= 720) {
+        hsWidth = 300;
+        hsHeight = 300;
+        hsX = x-hsWidth+60;
+        hsY = 20;
+        displayY = y+100;
+        displaySize = "35px monospace";
+        incorrectSize = "30px monospace";
+        incorrectX = x*1.42;
+        l1Y = y*.6;
+        l2Y = y*.72;
+    } else if (window.innerWidth <= 920) {
+        displaySize = "35px monospace";
+        incorrectSize = "30px monospace";
+        incorrectX = x*1.37;
+    }
 }
 
 // Event Listener to receive user inputted letter guesses from enter btn
@@ -140,7 +198,7 @@ guessForm.addEventListener('keypress', (e) => {
 // Receives user inputted value and ensures its an alphabetical letter not yet guessed
 // Calls checkInput function if a valid new letter
 function getInputValue() {
-    currentGuess = guessText.value;
+    currentGuess = guessText.value.toLowerCase();
     guessText.value = "";
     guessWarning.textContent = "";
     if (guessedWords.includes(currentGuess)) {
@@ -169,10 +227,10 @@ function checkInput() {
         incorrectGuess();
     } else {
         display.textContent = displayArray.join(" ");
-        ctx.font = "40px monospace";
+        ctx.font = displaySize;
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
-        ctx.fillText(display.textContent, x, y+130);
+        ctx.fillText(display.textContent, x, displayY);
         if (!displayArray.includes("_")) {
             winGame(true);
         }
@@ -220,11 +278,11 @@ function incorrectGuess() {
             break;
     }
     // Incorrect Guessed Words Display
-    ctx.font = "37px monospace";
+    ctx.font = incorrectSize;
     ctx.fillStyle = "black";
     ctx.textAlign = "left";
-    ctx.fillText(layer1Guess.join(" "), x*1.26, y*.69);
-    ctx.fillText(layer2Guess.join(" "), x*1.26, y*.80);
+    ctx.fillText(layer1Guess.join(" "), incorrectX, l1Y);
+    ctx.fillText(layer2Guess.join(" "), incorrectX, l2Y);
 }
 
 // Function to reveal win or loss result
