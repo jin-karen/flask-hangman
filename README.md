@@ -22,3 +22,4 @@ event listeners - once property, remove function
 javascript api requests
 Flask created an api for post requests
 currently only singleplayer 
+Responsive using bootstrap, css, and javascript
