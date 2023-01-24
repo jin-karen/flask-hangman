@@ -6,12 +6,12 @@
     {% if current_user.is_anonymous %}
     <h2 class="text-center">Hello Guest!</h2>
     <div class="text-center mt-4">
-        <img src="{{ url_for('static', filename='img/hangman_logo.png') }}" style="width:500px;" alt="Hangman Logo">
+        <img class="img-fluid" src="{{ url_for('static', filename='img/hangman_logo.png') }}" style="width:500px;" alt="Hangman Logo">
     </div>
     {% else %}
     <h2 class="text-center">Hello, {{ current_user.username.capitalize() }}!</h2>
     <div class="text-center mt-5">
-        <img src="{{ url_for('static', filename='img/hangman_logo.png') }}" style="width:500px;" alt="Hangman Logo">
+        <img class="img-fluid" src="{{ url_for('static', filename='img/hangman_logo.png') }}" style="width:500px;" alt="Hangman Logo">
     </div>
     <h2 class="text-center mt-5">Welcome back to Hangman!</h2>
     {% endif %}

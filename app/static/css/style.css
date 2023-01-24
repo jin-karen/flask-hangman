@@ -9,9 +9,9 @@ a {
     text-decoration: none;
 }
 
-/* Large Title Style */
-.largeTitle {
-    font-size: 600%;
+/* Class to Hide Elements*/
+.conceal {
+    display: none;
 }
 
 /* Light Heading Style*/
@@ -40,10 +40,18 @@ a {
     border-radius: 10px;
 }
 
-/* Class to Hide Elements*/
-.conceal {
-    display: none;
+/* Large Title Style */
+/* Title Size for Screens Above 500px */
+.largeTitle {
+    font-size: 600%;
 }
+
+    /* Title Size for Screens Under 500px */
+    @media screen and (max-width: 500px) {
+        .largeTitle {
+            font-size: 20vw;
+        }
+    }
 
 
 /* ===Navigation Bar Items===*/
@@ -86,6 +94,7 @@ a {
 
 /* ===play_hangman.html CSS=== */
 /* Start Page Button to Choose Game Mode */
+/* Button Size for Screens Above 300px */
 .startBtn {
     border: 3px solid #084A59;
     border-radius: 10px;
@@ -97,6 +106,13 @@ a {
     background-color: #EBE0D2;
     color: #084A59;
 }
+    /* Button Size for Screens Under 300px */
+    @media screen and (max-width: 300px) {
+        .startBtn {
+            width: 95%;
+            height: 90px;
+        }
+    }
 
 /* Hover Selector for Start Button */
 .startBtn:hover{
@@ -114,7 +130,7 @@ a {
 /* ===singleplayer_hangman.html CSS=== */
 /* Canvas for Hangman Game Play Pages*/
 #singleplayerCanvas {
-    width: 900px; /*650px*/
+    width: 900px; 
     height: 600px;
     border: 7px solid #333333;
 }
@@ -187,3 +203,80 @@ a {
     height: 50px;
     width: 150px;
 }
+
+    /* Various ID Sizes for Screens Under 920px */
+    @media screen and (max-width: 920px) {
+        #singleplayerCanvas {
+            width: 680px;
+        }
+    }
+    /* Various ID Sizes for Screens Under 720px */
+    @media screen and (max-width: 720px) {
+        #singleplayerCanvas {
+            width: 480px;
+        }
+    }
+    /* Various ID Sizes for Screens Under 520px */
+    @media screen and (max-width: 520px) {
+        #singleplayerCanvas {
+            width: 380px;
+        }
+        #guess {
+            bottom: 135px;
+        }
+        #result {
+            font-size: 1em;
+            bottom: 160px;
+        }
+        #endBtns {
+            bottom: 130px;
+        }
+    }
+    /* Various ID Sizes for Screens Under 420px */
+    @media screen and (max-width: 420px) {
+        #singleplayerCanvas {
+            width: 280px;
+        }
+        #guess {
+            bottom: 180px;
+        }
+        #guessTitle {
+            font-size: 1em;
+        }
+        #guessWarning {
+            font-size: 1em;
+        }
+        #result {
+            font-size: 0.9em;
+            bottom: 190px;
+        }
+        #endBtns {
+            bottom: 150px;
+        }
+        .endBtn {
+            width: 130px;
+            font-size: 0.9em;
+        }
+    }
+    /* Various ID Sizes for Screens Under 320px */
+    @media screen and (max-width: 320px) {
+        #singleplayerCanvas {
+            width: 100%;
+        }
+        #guess {
+            bottom: 250px;
+        }
+        #guessTitle {
+            font-size: .9em;
+        }
+        #result {
+            font-size: 0.8em;
+            bottom: 250px;
+        }
+        #endBtns {
+            bottom: 210px;
+        }
+        .endBtn {
+            width: 200px;
+        }
+    }
