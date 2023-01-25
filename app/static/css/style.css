@@ -132,6 +132,14 @@ a {
     border: 7px solid #333333;
 }
 
+#helpBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    cursor: pointer;
+}
+
 /* Logo displayed on the play_hangman Page*/
 #startLogo {
     width: 400px;

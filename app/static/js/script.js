@@ -321,4 +321,8 @@ async function postGame(url='', data={}) {
     return verdict;
 }
 
-  
+// Initializes all popovers and enables them to work (for helpBtn in singleplayer_hangman.html)
+let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+})

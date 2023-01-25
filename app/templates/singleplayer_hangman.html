@@ -32,6 +32,13 @@
         <a href="{{ url_for('singleplayer_hangman') }}"><button class="endBtn">Play Again</button></a>
         <a href="{{ url_for('index') }}"><button class="endBtn">Return to Home</button></a>
     </div>
+    <img id="helpBtn" src="{{ url_for('static', filename='img/help.png') }}" alt="help-button" 
+        data-bs-toggle="popover" data-bs-trigger="focus" tabindex="0" data-bs-html="true" title="Rules" 
+        data-bs-content="For each game, you'll be given a random word and have to guess the letters in the word. 
+        You can keep guessing until you get the word or until you make 6 incorrect guesses, whichever comes first. 
+        <br><br>A piece of the pineapple man will be hung for every incorrect guess and a delicious pineapple smoothie 
+        will be made after 6 incorrect guesses! <br><br>Choose your letters wisely and good luck! Pineapple man wants
+        to live! &#127821">
 {% endblock %}
 
 {% block scripts %}
