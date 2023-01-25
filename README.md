@@ -5,6 +5,7 @@ A web application for singleplayer hangman built using Python, Flask, CSS, HTML,
 
 ## To Run
 This project is live at: 
+
 It can also be run locally by following the instructions below. 
 
 ### Prerequisites
