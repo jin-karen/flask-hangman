@@ -60,9 +60,21 @@ When creating this web application, I used a more diverse tech stack than my fir
 * sending automated emails with Flask-Mail
 * password hashing and verification with Werkzeug
 * creating an API for post requests
-* etc.
- 
-I also gained an understanding on the CSS framework Bootstrap 5 in order to focus more on creating the web application and gameplay scripts. I utilized a number of its classes in my HTML templates (including Flask-WTF form templates) and complemented it with my own static CSS file. I was also able to brush up on existing knowledge in HTML, CSS, and Javascript and expand it by implementing the following topics: HTML canvas, accessing and manipulating canvases and context with Javascript, window.devicePixelRatio, background gradients, event listeners (with the once property), Javascript API requests, responsive designs, etc. Additionally, this project provided an opportunity to use gitignore and requirement.txt files for the first time. 
+
+etc.
+
+I also gained an understanding on the CSS framework Bootstrap 5 in order to focus more on creating the web application and gameplay scripts. I utilized a number of its classes in my HTML templates (including Flask-WTF form templates) and complemented it with my own static CSS file. I was also able to brush up on existing knowledge in HTML, CSS, and Javascript and expand it by implementing the following topics: 
+* HTML canvas
+* accessing and manipulating canvases and context with Javascript
+* window.devicePixelRatio
+* background gradients
+* event listeners (with the once property)
+* Javascript API requests
+* responsive designs
+
+etc. 
+
+Additionally, this project provided an opportunity to use gitignore and requirement.txt files for the first time. 
 
 ## Credits
 [Miguel Grinberg Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
