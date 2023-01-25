@@ -14,10 +14,14 @@ It can also be run locally by following the instructions below.
 In order to run the web application locally, first ensure you have a Python 3.x version installed. Then clone the project repositiory to your local computer.
 
 ### Create virtual environment 
-You should create a virtual environment in Python to have all the package versions needed to run this project without affecting the system-wide Python interpreter. In order to do so, navigate in your command line interface (CLI) to the root directory of the repository you just cloned and type: ``` python -m venv venv ``` Depending on your operating system, you may need to use ` python3 ` instead of ` python `. The second ` venv ` is the name of the virtual environment but you can set whatever name you want, as long as you keep it the same when you activate your environment. To activate and use your virtual environment, type: ``` venv\Scripts\activate ```
+You should create a virtual environment in Python to have all the package versions needed to run this project without affecting the system-wide Python interpreter. In order to do so, navigate in your command line interface (CLI) to the root directory of the repository you just cloned and type: 
+``` python -m venv venv ``` 
+Depending on your operating system, you may need to use ` python3 ` instead of ` python `. The second ` venv ` is the name of the virtual environment but you can set whatever name you want, as long as you keep it the same when you activate your environment. To activate and use your virtual environment, type: 
+``` venv\Scripts\activate ```
 
 ### Install Dependencies
-The dependencies required to run this project is listed in the requirements.txt file. You can download the packages by entering this in the CLI: ```pip install -r requirements.txt```
+The dependencies required to run this project is listed in the requirements.txt file. You can download the packages by entering this in the CLI: 
+```pip install -r requirements.txt```
 
 ### Configuration/ENV File
 Currently, the configuration file (config.py in the root directory) includes only configuration variables set equivalent to operating system (OS) environmental variables, no hardcoded configuration items. Nothing in the configuration file needs to be changed. However, in order to run the project locally, you'll need to create a file in the root directory called ` .env ` (left out for security purposes). Within this file, you'll need to include the following environment variables and replace the Xs with your own keys and information: 
