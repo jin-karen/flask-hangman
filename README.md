@@ -71,7 +71,7 @@ I also gained an understanding on the CSS framework Bootstrap 5 in order to focu
 * Javascript API requests
 * responsive designs, etc. 
 
-Additionally, this project provided an opportunity to use gitignore and requirement.txt files for the first time. Lastly, I learned how to host web services on render, which is where the project is currently hosted live.
+Additionally, this project provided an opportunity to use gitignore and requirement.txt files for the first time. Lastly, I learned how to host web services on Render, which is where the project is currently hosted live.
 
 ## Credits
 [Miguel Grinberg Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)

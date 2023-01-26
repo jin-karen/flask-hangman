@@ -132,6 +132,7 @@ a {
     border: 7px solid #333333;
 }
 
+/* Help Button for Rules */
 #helpBtn {
     position: fixed;
     bottom: 20px;
@@ -207,6 +208,15 @@ a {
     font-weight: bold;
     height: 50px;
     width: 150px;
+}
+
+/* Footer */
+.footer{
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    color: #084A59;
 }
 
     /* Various ID Sizes for Screens Under 920px */
