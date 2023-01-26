@@ -91,7 +91,7 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.html', title='Edit Profile', form=form, bg_class='adminPage',)
+    return render_template('edit_profile.html', title='Edit Profile', form=form, bg_class='adminPage')
 
 # App.route Decorator and View Function for Reset Password Request Page
 # Allows User to Request for a New Password to be Sent to Email
@@ -106,8 +106,7 @@ def reset_password_request():
             send_password_reset_email(user)
         flash('Check your email for instructions to reset your password')
         return redirect(url_for('login'))
-    return render_template('reset_password_request.html',
-                           title='Reset Password', form=form)
+    return render_template('reset_password_request.html', title='Reset Password', form=form, bg_class='loginPage')
 
 # App.route Decorator and View Function for Actual Password Reset Page
 # Allows User to Enter and Set New Password Value if Link/Token is Valid
@@ -124,7 +123,7 @@ def reset_password(token):
         db.session.commit()
         flash('Success! Your password has been reset.')
         return redirect(url_for('login'))
-    return render_template('reset_password.html', title='Reset Password', form=form)
+    return render_template('reset_password.html', title='Reset Password', form=form, bg_class='loginPage')
 
 # App.route Decorator and View Function for Hangman Game Page
 @app.route('/play_hangman')
