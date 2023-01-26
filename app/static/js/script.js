@@ -302,7 +302,7 @@ function winGame(outcome) {
         game_won: outcome,
         incorrect_guesses: layer1Guess.length + layer2Guess.length,
     };
-    postGame('http://localhost:5000/post_results', game)
+    postGame(window.location.protocol + '/post_results', game)
         .then((verdict) => {
             console.log(verdict);
         });
