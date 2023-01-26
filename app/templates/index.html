@@ -8,6 +8,7 @@
     <div class="text-center mt-4">
         <img class="img-fluid" src="{{ url_for('static', filename='img/hangman_logo.png') }}" style="width:500px;" alt="Hangman Logo">
     </div>
+    <h4 class="text-center mt-5">Login to Access Your Game Stats!</h4>
     {% else %}
     <h2 class="text-center">Hello, {{ current_user.username.capitalize() }}!</h2>
     <div class="text-center mt-5">
