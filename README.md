@@ -4,7 +4,7 @@
 A web application for singleplayer hangman built using Python, Flask, CSS, HTML, Javascript, and Bootstrap. This project is an enhanced rework of my previous python hangman game, which was run on Powershell. The web application has the functionality to create new accounts, to login, to reset passwords, generate profile pages with a customizable about me, pick random words to run through hangman games, and to store game statistics. It's currently only available for singleplayer gamemode in order to focus and showcase the entirety of the web application's frontend and backend. 
 
 ## To Run
-This project is live at: 
+This project is live at: https://jin-flask-hangman.onrender.com/
 
 It can also be run locally by following the instructions below. 
 
@@ -71,7 +71,7 @@ I also gained an understanding on the CSS framework Bootstrap 5 in order to focu
 * Javascript API requests
 * responsive designs, etc. 
 
-Additionally, this project provided an opportunity to use gitignore and requirement.txt files for the first time. 
+Additionally, this project provided an opportunity to use gitignore and requirement.txt files for the first time. Lastly, I learned how to host web services on render, which is where the project is currently hosted live.
 
 ## Credits
 [Miguel Grinberg Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
