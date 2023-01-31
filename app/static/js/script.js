@@ -55,8 +55,8 @@ window.onload = startCanvas;
 // Function for event listener to change cursor into pointer when hovering over start button 
 function startPointer(e) {
     const mousePos = {
-        x: e.clientX - c.offsetLeft,
-        y: e.clientY - c.offsetTop
+        x: e.pageX - c.offsetLeft,
+        y: e.pageY - c.offsetTop
     };
     // if mouse is over canvas start button
     if ((mousePos.x > (x-startBtnWidth/2)) && 
@@ -78,8 +78,8 @@ c.addEventListener('mousemove', startPointer);
 // Event listener to tell if canvas start button is clicked
 c.addEventListener('click', (e) => {
     const mousePos = {
-      x: e.clientX - c.offsetLeft,
-      y: e.clientY - c.offsetTop
+      x: e.pageX - c.offsetLeft,
+      y: e.pageY - c.offsetTop
     };
     if (mousePos.x > (x-(startBtnWidth/2)) && mousePos.x < (x+(startBtnWidth/2))) {
         if (mousePos.y > (y-(startBtnHeight/2)) && mousePos.y < (y+(startBtnHeight/2))) {
