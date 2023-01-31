@@ -11,8 +11,8 @@ c.height = c.offsetHeight * dpi;
 ctx.scale(dpi,dpi);
 
 // Vertical and Horizontal Canvas Center
-const x = c.width / 2
-const y = c.height / 2
+const x = c.offsetWidth / 2
+const y = c.offsetHeight / 2
 
 // Start button 
 const startBtnWidth = 200;
@@ -21,12 +21,12 @@ const startBtnRadii = 10;
 
 // Create Gradient Canvas Background 
 function canvasGBG(canvas, context) {
-    const gradientBG = context.createLinearGradient(0, 0, 0, canvas.height);
+    const gradientBG = context.createLinearGradient(0, 0, 0, canvas.offsetHeight);
     gradientBG.addColorStop(0, "#F3EDE0");
     gradientBG.addColorStop(.3, "#F3EDE0");
     gradientBG.addColorStop(1, "#84B8D9");
     context.fillStyle = gradientBG;
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
 }
 
 // Create Canvas Start Button 
