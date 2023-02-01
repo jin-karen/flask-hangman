@@ -328,9 +328,9 @@ let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 })
 
 // Mobile Device Only Event listener to tell if canvas start button is clicked
-const mobileStart = document.getElementById("mobileStart");
-mobileStart.addEventListener('click', () => {
-    mobileStart.classList.toggle("conceal");
-    canvasGBG(c, ctx);
-    singleplayerSetup();
-})
+// const mobileStart = document.getElementById("mobileStart");
+// mobileStart.addEventListener('click', () => {
+//     mobileStart.classList.toggle("conceal");
+//     canvasGBG(c, ctx);
+//     singleplayerSetup();
+// })

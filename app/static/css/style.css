@@ -220,9 +220,9 @@ a {
 }
 
 /* Start Button for Canvas on Mobile Phones */
-#mobileStart{
+/* #mobileStart{
        display: none; 
-    }
+} */
 
     /* Various ID Sizes for Screens Under 920px */
     @media screen and (max-width: 920px) {
@@ -302,7 +302,7 @@ a {
     }
 
     /* Mobile Phones with Max Device Width 480px */
-    @media screen and (max-device-width: 480px) {
+    /* @media screen and (max-device-width: 480px) {
         #mobileStart{
             width: 200px;
             height: 100px;
@@ -317,5 +317,5 @@ a {
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
         }
-    }
+    } */
     
