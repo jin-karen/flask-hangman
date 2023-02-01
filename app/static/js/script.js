@@ -326,3 +326,11 @@ let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)
 })
+
+// Mobile Device Only Event listener to tell if canvas start button is clicked
+const mobileStart = document.getElementById("mobileStart");
+mobileStart.addEventListener('click', () => {
+    mobileStart.classList.toggle("conceal");
+    canvasGBG(c, ctx);
+    singleplayerSetup();
+})
