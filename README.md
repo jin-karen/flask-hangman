@@ -84,3 +84,10 @@ Additionally, this project provided an opportunity to use gitignore and requirem
 [MDBootstrap](https://mdbootstrap.com/docs/standard/extended/login/)
 
 [Desi Quintans' 6,800+ Noun List](https://www.desiquintans.com/nounlist)
+
+## Screenshots
+![Flask_Hangman1](https://user-images.githubusercontent.com/102393842/217394410-e80d1d0c-e4b4-4799-aa90-1cfe30181848.png)
+![Flask_Hangman2](https://user-images.githubusercontent.com/102393842/217394435-dc14d9e2-d7fb-4419-9450-5cae2a47c562.png)
+![Flask_Hangman3](https://user-images.githubusercontent.com/102393842/217394447-adae22ce-a969-4773-8823-0c267ff7f3c6.png)
+![Flask_Hangman4](https://user-images.githubusercontent.com/102393842/217394458-e7117377-f758-4063-ac4c-829b2b17ba8f.png)
+![Flask_Hangman5](https://user-images.githubusercontent.com/102393842/217394467-d86111d4-ab75-480d-b7f9-f15d148feb7e.png)
