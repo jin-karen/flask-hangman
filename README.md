@@ -11,7 +11,7 @@ Web application may take time to load as it is a web service on Render's free in
 
 Project was coded for 1920x1080 display resolution and adjustments were made for smaller screens.<br/>
 Desktop chrome usage at 1920x1080 and 100% zoom is recommended for best and playing viewing experience.<br/>
-Game canvas is not optimized for mobile devices andd experiences loading issues.
+Game canvas is not optimized for mobile devices and experiences loading issues.
 
 ### Prerequisites
 In order to run the web application locally, first ensure you have a Python 3.x version installed. Then clone the project repositiory to your local computer.
